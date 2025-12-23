@@ -1,0 +1,20 @@
+# Local
+.DS_Store
+*.local
+*.log*
+
+# Dist
+node_modules
+dist/
+
+# Native copied assets (ignore outputs of copy-assets)
+android/app/src/main/assets/
+ios/SparklingGo/SparklingGo/Resources/Assets/
+
+# Sparkling temp files
+.sparkling/
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea

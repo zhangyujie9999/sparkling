@@ -1,0 +1,36 @@
+{
+  "name": "sparkling-cli",
+  "version": "2.0.0",
+  "description": "Sparkling workspace helper CLI (build, copy-assets, autolink, run android/ios)",
+  "bin": {
+    "sparkling-cli": "./bin.js",
+    "sparkling": "./bin.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "bin.js"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@lynx-js/rspeedy": "^0.9.7",
+    "commander": "^12.1.0",
+    "fast-glob": "^3.3.3",
+    "fs-extra": "^11.2.0",
+    "chalk": "^4.1.2",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.17.50",
+    "typescript": "^5.8.3"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=18"
+  }
+}

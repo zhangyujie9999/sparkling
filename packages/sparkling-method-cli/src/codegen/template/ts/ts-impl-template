@@ -1,0 +1,78 @@
+import pipe from '{{packageName}}';
+import type { {{requestInterface.name}}, {{responseInterface.name}}{{#extraInterfaces}}, {{name}}{{/extraInterfaces}} } from './{{methodName}}.d';
+
+/**
+ * {{methodName}} method
+{{#hasRequestParams}}
+ * @param params - The request parameters
+{{/hasRequestParams}}
+ * @param callback - Callback function to handle the response
+{{#validationRules}}
+{{#field}}
+ * @throws Will call callback with error if {{field}} validation fails
+{{/field}}
+{{/validationRules}}
+ */
+export function {{methodCamelCase}}({{#hasRequestParams}}params: {{requestInterface.name}}, {{/hasRequestParams}}callback: (result: {{responseInterface.name}}) => void): void {
+    // Parameter validation
+    if (!params) {
+        const errorResponse: {{responseInterface.name}} = {
+            code: -1,
+            msg: 'Invalid params: params cannot be null or undefined',
+{{#hasResponseData}}
+            data: undefined,
+{{/hasResponseData}}
+        };
+        if (typeof callback === 'function') {
+            callback(errorResponse);
+        }
+        return;
+    }
+
+{{#validationRules}}
+{{#field}}
+{{^jsType}}
+    // null-check validation for params
+{{/jsType}}
+{{#jsType}}
+    // type-check validation for {{field}}
+    if (!params.{{field}} || typeof params.{{field}} !== '{{jsType}}'{{#trimValue}} || !params.{{field}}.trim(){{/trimValue}}) {
+        const errorResponse: {{../responseInterface.name}} = {
+            code: -1,
+            msg: '{{errorMessage}}',
+{{#../hasResponseData}}
+            data: undefined,
+{{/../hasResponseData}}
+        };
+        if (typeof callback === 'function') {
+            callback(errorResponse);
+        }
+        return;
+    }
+{{/jsType}}
+{{/field}}
+{{/validationRules}}
+
+    // Callback validation
+    if (typeof callback !== 'function') {
+        console.error('[{{moduleName}}] {{methodCamelCase}}: callback must be a function');
+        return;
+    }
+
+    // Pipe call
+    pipe.call('{{pipeCall.methodString}}', {
+{{#pipeCall.params}}
+        {{.}},
+{{/pipeCall.params}}
+    }, (v: unknown) => {
+        // Type assertion and response normalization
+        const response = v as {{responseInterface.name}};
+        callback({
+            code: response?.code ?? -1,
+            msg: response?.msg ?? 'Unknown error',
+{{#hasResponseData}}
+            data: response?.data,
+{{/hasResponseData}}
+        });
+    });
+}

@@ -1,0 +1,16 @@
+{
+  arrowParens: always
+  bracketSpacing: true
+  bracketSameLine: false
+  endOfLine: lf
+  jsxSingleQuote: false
+  quoteProps: as-needed
+  semi: true
+  tabWidth: 2
+  useTabs: false
+  vueIndentScriptAndStyle: false
+
+  singleQuote: true
+  printWidth: 120
+  trailingComma: all
+}

@@ -1,0 +1,36 @@
+{
+  "name": "sparkling-playground",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Multi-page Sparkling app template with main app and second page demos",
+  "scripts": {
+    "build": "rspeedy build && node scripts/copy-assets.js",
+    "dev": "rspeedy dev",
+    "format": "prettier --write .",
+    "preview": "rspeedy preview",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@lynx-js/react": "^0.107.0",
+    "sparkling-router": "workspace:*",
+    "sparkling-storage": "workspace:*"
+  },
+  "devDependencies": {
+    "@lynx-js/qrcode-rsbuild-plugin": "^0.3.6",
+    "@lynx-js/react-rsbuild-plugin": "^0.9.8",
+    "@lynx-js/rspeedy": "^0.9.3",
+    "@lynx-js/types": "^3.2.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@types/react": "^18.3.20",
+    "jsdom": "^26.1.0",
+    "prettier": "^3.5.3",
+    "typescript": "~5.8.3",
+    "vitest": "^3.1.2",
+    "@vitest/coverage-v8": "^3.1.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "private": true
+}

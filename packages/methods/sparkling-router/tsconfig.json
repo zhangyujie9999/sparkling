@@ -1,0 +1,18 @@
+{
+  "extends": "../../../tsconfig.json", // Extend tsconfig.json configuration from repo root
+  "compilerOptions": {
+    "outDir": "./dist", // Specify output directory as ./dist (relative to current directory)
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": false
+  },
+  "include": [
+    "./src/**/*", // Include all .ts, .tsx, .d.ts files under src directory
+    "index.ts"  // Include index.ts file in project root directory
+  ],
+  "exclude": [
+    "node_modules", // Exclude node_modules
+    "dist",          // Exclude output directory itself
+    "**/*.test.ts"   // Exclude test files from tsc build
+  ]
+}

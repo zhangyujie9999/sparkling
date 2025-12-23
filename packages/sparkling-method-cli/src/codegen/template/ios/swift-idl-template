@@ -1,0 +1,83 @@
+// Copyright 2025 The Sparkling Authors. All rights reserved.
+// Licensed under the Apache License Version 2.0 that can be found in the
+// LICENSE file in the root directory of this source tree.
+
+import Foundation
+import SparklingMethod
+
+// Auto-generated temporary model types
+{{#extraTypes}}
+@objc({{{objcName}}})
+public class {{structName}}: NSObject {
+{{#hasFields}}
+    @objc public var {{name}}: {{type}}{{#optional}}?{{/optional}}
+{{/hasFields}}
+{{^hasFields}}
+    // No fields defined.
+{{/hasFields}}
+
+    @objc public class func jsonKeyPathsByPropertyKey() -> [AnyHashable: Any] {
+        return {
+            {{#hasFields}}
+            "{{name}}": "{{name}}"{{^isLast}},{{/isLast}}
+            {{/hasFields}}
+        }()
+    }
+}
+
+{{/extraTypes}}
+// Parameter model
+@objc({{request.objcName}})
+public class {{request.structName}}: SPKMethodModel {
+    {{#request.hasFields}}
+    @objc public var {{name}}: {{type}}{{#optional}}?{{/optional}}{{#defaultValue}} = {{.}}{{/defaultValue}}
+    {{/request.hasFields}}
+
+    @objc public override class func requiredKeyPaths() -> Set<String>? {
+        return nil
+    }
+
+    @objc public override class func jsonKeyPathsByPropertyKey() -> [AnyHashable: Any] {
+        return {
+            {{#request.hasFields}}
+            "{{name}}": "{{name}}"{{^isLast}},{{/isLast}}
+            {{/request.hasFields}}
+        }()
+    }
+}
+
+// Result model
+@objc({{response.objcName}})
+public class {{response.structName}}: SPKMethodModel {
+    {{#response.hasFields}}
+    @objc public var {{name}}: {{type}}{{#optional}}?{{/optional}}{{#defaultValue}} = {{.}}{{/defaultValue}}
+    {{/response.hasFields}}
+
+    @objc public override class func jsonKeyPathsByPropertyKey() -> [AnyHashable: Any] {
+        return {
+            {{#response.hasFields}}
+            "{{name}}": "{{name}}"{{^isLast}},{{/isLast}}
+            {{/response.hasFields}}
+        }()
+    }
+}
+
+// Main method class
+@objc({{methodObjcName}})
+public class {{methodClassName}}: PipeMethod {
+    @objc public override var paramsModelClass: AnyClass {
+        return {{request.structName}}.self
+    }
+
+    @objc public override var resultModelClass: AnyClass {
+        return {{response.structName}}.self
+    }
+
+    public override var methodName: String {
+        return "{{moduleName}}.{{methodName}}"
+    }
+
+    public override class func methodName() -> String {
+        return "{{moduleName}}.{{methodName}}"
+    }
+}

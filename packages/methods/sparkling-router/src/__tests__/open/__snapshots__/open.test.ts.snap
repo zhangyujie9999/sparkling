@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`open snapshot testing for error responses should return consistent error response for invalid scheme: invalid-scheme-error 1`] = `
+{
+  "code": -1,
+  "msg": "Invalid params: scheme must be a non-empty string",
+}
+`;
+
+exports[`open snapshot testing for error responses should return consistent error response for null params: null-params-error 1`] = `
+{
+  "code": -1,
+  "msg": "Invalid params: params cannot be null or undefined",
+}
+`;

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`close snapshot testing for response processing should return consistent processed response for incomplete bridge response: incomplete-bridge-response 1`] = `
+{
+  "code": -1,
+  "msg": "Unknown error",
+}
+`;
+
+exports[`close snapshot testing for response processing should return consistent processed response for incomplete pipe response: incomplete-pipe-response 1`] = `
+{
+  "code": -1,
+  "msg": "Unknown error",
+}
+`;
+
+exports[`close snapshot testing for response processing should return consistent processed response for valid bridge response: valid-close-response 1`] = `
+{
+  "code": 0,
+  "msg": "Operation completed",
+}
+`;
+
+exports[`close snapshot testing for response processing should return consistent processed response for valid pipe response: valid-close-response 1`] = `
+{
+  "code": 0,
+  "msg": "Operation completed",
+}
+`;

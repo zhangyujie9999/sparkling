@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sparkling-storage module exports snapshot testing for module structure should maintain consistent module export structure: storage-module-export-structure 1`] = `
+{
+  "exportCount": 2,
+  "exportedKeys": [
+    "setItem",
+    "getItem",
+  ],
+  "functionNames": [
+    "setItem",
+    "getItem",
+  ],
+}
+`;

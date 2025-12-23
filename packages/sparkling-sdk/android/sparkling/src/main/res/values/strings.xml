@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Sparkling</string>
+    <string name="click_again_to_exit">Click again to exit</string>
+    <string name="sparkling_page_title">Sparkling Page</string>
+</resources>

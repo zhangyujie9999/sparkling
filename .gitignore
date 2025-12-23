@@ -1,0 +1,25 @@
+# Local
+.DS_Store
+*.local
+*.log*
+
+# Dist
+node_modules
+dist/
+output/
+output_resource/
+**/doc_build
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# Generated assets
+template/sparkling-app-template/android/app/src/main/assets/
+template/sparkling-app-template/ios/SparklingGo/SparklingGo/Resource/Assets/
+
+tsconfig.tsbuildinfo
+
+# Python
+__pycache__/

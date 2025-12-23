@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getItem snapshot testing for error responses should return consistent error response for invalid key: invalid-key-error 1`] = `
+{
+  "code": -1,
+  "msg": "Invalid params: key must be a non-empty string",
+}
+`;
+
+exports[`getItem snapshot testing for error responses should return consistent error response for null params: null-params-error 1`] = `
+{
+  "code": -1,
+  "msg": "Invalid params: params cannot be null or undefined",
+}
+`;
+
+exports[`getItem snapshot testing for error responses should return consistent processed response for valid bridge response: valid-get-response 1`] = `
+{
+  "code": 0,
+  "data": {
+    "data": "test-value",
+  },
+  "msg": "Retrieved successfully",
+}
+`;

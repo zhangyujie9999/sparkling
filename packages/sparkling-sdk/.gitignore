@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+coverage/
+*.tsbuildinfo
+
+# Android SDK artifacts
+android/.gradle/
+android/.idea/
+android/local.properties
+android/**/build/
+android/**/captures/
+
+# iOS SDK artifacts
+ios/Pods/
+ios/DerivedData/
+ios/build/
+ios/**/*.xcworkspace/xcuserdata/
+ios/**/*.xcuserstate
+
+# Example app build outputs
+examples/**/build/
+examples/**/DerivedData/
+examples/**/Pods/
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor artifacts
+.DS_Store

@@ -1,0 +1,17 @@
+{
+  "labels": {
+    "tip": "Tip"
+  },
+  "colors": {
+    "headline": "cyan",
+    "success": "green",
+    "warn": "yellow",
+    "error": "red",
+    "info": "cyanBright",
+    "muted": "dim",
+    "tipLabel": "cyan",
+    "tipText": "blue",
+    "promptLabel": "cyan",
+    "promptText": "cyan"
+  }
+}

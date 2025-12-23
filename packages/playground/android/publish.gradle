@@ -1,0 +1,91 @@
+// Centralized Maven Publish configuration for Android AARs
+// - Reads coordinates from gradle.properties
+// - Keeps Android namespace untouched
+// - No-op for non-library modules
+
+def isAndroidLibrary = plugins.hasPlugin('com.android.library')
+if (!isAndroidLibrary) {
+    return
+}
+
+// Ensure maven-publish plugin is applied
+plugins.apply('maven-publish')
+
+// Properties with sensible defaults
+def publishGroup = (findProperty("PUBLISH_GROUP") ?: "com.tiktok.sparkling").toString()
+def publishVersion = (findProperty("PUBLISH_VERSION") ?: "2.0.0").toString()
+def publishArtifactIdProp = findProperty("PUBLISH_ARTIFACT_ID")
+def publishArtifactIdDefault = project.name
+def resolvedArtifactId = (publishArtifactIdProp ?: publishArtifactIdDefault).toString()
+def publishPomName = (findProperty("PUBLISH_POM_NAME") ?: resolvedArtifactId).toString()
+def publishPomDescription = (findProperty("PUBLISH_POM_DESCRIPTION") ?: "${resolvedArtifactId} Android AAR").toString()
+
+group = publishGroup
+version = publishVersion
+
+// Create sources and javadoc jars if not already present
+def sourcesJarTaskName = "androidSourcesJar"
+def javadocJarTaskName = "javadocJar"
+
+if (tasks.findByName(sourcesJarTaskName) == null) {
+    tasks.register(sourcesJarTaskName, org.gradle.api.tasks.bundling.Jar) { t ->
+        t.archiveClassifier.set("sources")
+        // Kotlin DSL equivalent: android.sourceSets.getByName("main").java.srcDirs
+        def javaSrc = android.sourceSets.getByName("main").java.srcDirs
+        from(javaSrc)
+    }
+}
+if (tasks.findByName(javadocJarTaskName) == null) {
+    tasks.register(javadocJarTaskName, org.gradle.api.tasks.bundling.Jar) { t ->
+        t.archiveClassifier.set("javadoc")
+    }
+}
+
+// Configure publication (augment if one already exists)
+afterEvaluate {
+    publishing {
+        publications {
+            def pub = findByName("release")
+            def created = false
+            if (pub == null) {
+                pub = create("release", org.gradle.api.publish.maven.MavenPublication) { p ->
+                    from(project.components.findByName("release"))
+                }
+                created = true
+            }
+            pub.groupId = publishGroup
+            pub.version = publishVersion
+            if (publishArtifactIdProp != null) {
+                pub.artifactId = publishArtifactIdProp.toString()
+            } else if (created && (pub.artifactId == null || pub.artifactId.toString().trim().isEmpty())) {
+                pub.artifactId = publishArtifactIdDefault
+            }
+
+            def sourcesJar = tasks.named(sourcesJarTaskName).get()
+            def javadocJar = tasks.named(javadocJarTaskName).get()
+            if (!pub.artifacts.any { it.file == sourcesJar.archiveFile.get().asFile }) {
+                pub.artifact(sourcesJar)
+            }
+            if (!pub.artifacts.any { it.file == javadocJar.archiveFile.get().asFile }) {
+                pub.artifact(javadocJar)
+            }
+
+            pub.pom {
+                name.set(publishPomName)
+                description.set(publishPomDescription)
+            }
+        }
+        // Repositories can be configured via environment or extra props if needed.
+        // By default, rely on caller tasks (e.g., publishToMavenLocal).
+        // Example (opt-in):
+        // repositories {
+        //     maven {
+        //         url = uri(findProperty("PUBLISH_REPO_URL") ?: "${rootProject.buildDir}/repo")
+        //         credentials {
+        //             username = (findProperty("PUBLISH_REPO_USERNAME") ?: System.getenv("PUBLISH_REPO_USERNAME"))?.toString()
+        //             password = (findProperty("PUBLISH_REPO_PASSWORD") ?: System.getenv("PUBLISH_REPO_PASSWORD"))?.toString()
+        //         }
+        //     }
+        // }
+    }
+}

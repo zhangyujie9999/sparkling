@@ -1,0 +1,58 @@
+{
+  "name": "sparkling-storage",
+  "platforms": ["android", "ios", "web"],
+  "version": "1.0.0",
+  "description": "Storage methods for data persistence in Sparkling apps",
+  "methods": {
+    "getItem": {
+      "description": "Retrieve an item from storage",
+      "parameters": {
+        "key": "string",
+        "options": "Record<string, any>"
+      },
+      "returns": {
+        "success": "boolean",
+        "data": "any",
+        "error": "string"
+      }
+    },
+    "setItem": {
+      "description": "Store an item in storage",
+      "parameters": {
+        "key": "string",
+        "data": "any",
+        "options": "Record<string, any>"
+      },
+      "returns": {
+        "success": "boolean",
+        "error": "string"
+      }
+    },
+    "removeItem": {
+      "description": "Remove an item from storage",
+      "parameters": {
+        "key": "string",
+        "options": "Record<string, any>"
+      },
+      "returns": {
+        "success": "boolean",
+        "error": "string"
+      }
+    }
+  },
+  "android": {
+    "packageName": "com.tiktok.sparkling.methods.storage",
+    "className": "StorageMethod",
+    "buildGradle": "android/build.gradle.kts"
+  },
+  "ios": {
+    "moduleName": "SPKStorage",
+    "className": "StorageMethod",
+    "podspecPath": "ios/Sparkling-SPKStorage.podspec",
+    "swiftVersion": "5.0"
+  },
+  "web": {
+    "entryPoint": "index.ts",
+    "bundleName": "storage.bundle"
+  }
+}
