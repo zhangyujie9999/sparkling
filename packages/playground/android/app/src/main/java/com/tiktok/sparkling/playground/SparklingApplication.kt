@@ -20,11 +20,6 @@ import com.tiktok.sparkling.method.registry.core.SparklingBridgeManager
 import com.tiktok.sparkling.method.router.close.RouterCloseMethod
 import com.tiktok.sparkling.method.router.open.RouterOpenMethod
 import com.tiktok.sparkling.method.router.utils.RouterProvider
-//import com.tiktok.sparkling.method.media.choosemedia.ChooseMediaMethod
-//import com.tiktok.sparkling.method.media.downloadfile.DownloadFileMethod
-//import com.tiktok.sparkling.method.media.savedataurl.SaveDataURLMethod
-//import com.tiktok.sparkling.method.media.uploadfile.UploadFileMethod
-//import com.tiktok.sparkling.method.media.uploadimage.UploadImageMethod
 import com.tiktok.sparkling.method.runtime.depend.CommonDependsProvider
 import com.tiktok.sparkling.method.storage.getItem.StorageGetItemMethod
 import com.tiktok.sparkling.method.storage.removeItem.StorageRemoveItemMethod
@@ -85,12 +80,6 @@ class SparklingApplication : Application() {
         SparklingBridgeManager.registerIDLMethod(StorageSetItemMethod::class.java)
         SparklingBridgeManager.registerIDLMethod(StorageGetItemMethod::class.java)
         SparklingBridgeManager.registerIDLMethod(StorageRemoveItemMethod::class.java)
-
-//        SparklingBridgeManager.registerIDLMethod(ChooseMediaMethod::class.java)
-//        SparklingBridgeManager.registerIDLMethod(DownloadFileMethod::class.java)
-//        SparklingBridgeManager.registerIDLMethod(SaveDataURLMethod::class.java)
-//        SparklingBridgeManager.registerIDLMethod(UploadFileMethod::class.java)
-//        SparklingBridgeManager.registerIDLMethod(UploadImageMethod::class.java)
     }
 
     private fun initDepends() {

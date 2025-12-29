@@ -24,7 +24,7 @@
   "license": "Apache-2.0",
   "description": "none",
   "dependencies": {
-    "sparkling-method-sdk": "2.0.0"
+    "sparkling-method-sdk": "workspace:*"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",

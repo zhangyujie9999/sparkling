@@ -66,7 +66,6 @@ dependencies {
     implementation(project(":sparkling"))
     implementation(project(":sparkling-router"))
     implementation(project(":sparkling-storage"))
-//    implementation(project(":sparkling-method-media"))
 
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
@@ -82,24 +81,6 @@ dependencies {
     kapt(libs.lynx.processor)
 }
 
-
-kapt {
-    javacOptions {
-        option("-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED")
-        option("-J--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED")
-        option("-J--add-exports=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED")
-        option("-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED")
-        option("-J--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED")
-        option("-J--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED")
-        option("-J--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED")
-        option("-J--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED")
-        option("-J--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED")
-        option("-J--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED")
-        option("-J--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED")
-        option("-J--add-opens=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED")
-        option("-J--add-opens=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED")
-    }
-}
 
 tasks.register<JacocoReport>("jacocoTestReport") {
     dependsOn(tasks.named("testDebugUnitTest"))

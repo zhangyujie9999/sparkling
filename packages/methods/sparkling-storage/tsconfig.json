@@ -12,6 +12,8 @@
   ],
   "exclude": [
     "node_modules", // Exclude node_modules
-    "dist"          // Exclude output directory itself
+    "dist",          // Exclude output directory itself
+    "**/*.test.ts",  // Exclude test files from tsc build
+    "**/__tests__/**" // Exclude test directories from tsc build
   ]
 }

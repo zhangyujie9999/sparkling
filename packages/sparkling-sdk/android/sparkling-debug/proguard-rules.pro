@@ -1,0 +1,2 @@
+# No additional shrinking rules.
+
