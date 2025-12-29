@@ -55,5 +55,5 @@ Key folders/files created by the default template:
 - Node.js **>= 18** (repo requirement)
 - A Node package manager of your choice (`pnpm`, `npm`, `yarn`, or `bun`)
 - For running native shells:
-  - Android Studio / Android SDK (Android)
-  - Xcode + iOS Simulator (iOS)
+  - Android Studio / Android SDK (Android) / JDK 11
+  - Xcode 26 + iOS Simulator (iOS)
