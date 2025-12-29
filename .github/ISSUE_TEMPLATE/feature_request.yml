@@ -1,0 +1,75 @@
+name: Feature request
+description: Suggest an idea or enhancement for Sparkling.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for proposing an enhancement!
+
+        Please check existing issues and include enough context for maintainers to evaluate scope and impact.
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Preflight checklist
+      options:
+        - label: I searched existing issues to avoid duplicates.
+          required: true
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which area would this change affect?
+      options:
+        - packages/sparkling-sdk
+        - packages/sparkling-method-sdk
+        - packages/methods
+        - packages/sparkling-cli
+        - packages/create-sparkling-app
+        - packages/sparkling-method-cli
+        - packages/playground
+        - template/sparkling-app-template
+        - docs
+        - Other / Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What problem are you trying to solve? Why is it valuable?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the change you’d like to see. Include API/CLI examples when applicable.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What other approaches did you consider? What are the tradeoffs?
+    validations:
+      required: false
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Links, screenshots, prior art, or related issues/PRs.
+    validations:
+      required: false
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      options:
+        - label: I’m willing to submit a PR for this feature.
+          required: false
+        - label: I’m willing to help test this feature.
+          required: false
+

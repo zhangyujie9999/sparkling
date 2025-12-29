@@ -1,0 +1,99 @@
+name: Bug report
+description: Report a reproducible problem in Sparkling.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug!
+
+        Before filing, please check existing issues and include a minimal reproduction when possible.
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Preflight checklist
+      options:
+        - label: I searched existing issues to avoid duplicates.
+          required: true
+        - label: I can reproduce this issue on the latest `main` (or have provided the exact version/commit below).
+          required: true
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which area is affected?
+      options:
+        - packages/sparkling-sdk
+        - packages/sparkling-method-sdk
+        - packages/methods
+        - packages/sparkling-cli
+        - packages/create-sparkling-app
+        - packages/sparkling-method-cli
+        - packages/playground
+        - template/sparkling-app-template
+        - docs
+        - Other / Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the problem clearly and concisely.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Provide a minimal, copy-pastable reproduction when possible.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / screenshots
+      description: Paste any relevant output (please redact sensitive data). For long logs, use a GitHub gist or paste service.
+      render: shell
+    validations:
+      required: false
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Please fill out as much as you can.
+      value: |
+        - Host OS:
+        - Target platform (Android/iOS):
+        - Node.js version:
+        - pnpm version:
+        - Lynx version:
+        - Sparkling version / commit:
+    validations:
+      required: true
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      options:
+        - label: I’m willing to submit a PR to fix this.
+          required: false
+

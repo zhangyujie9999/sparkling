@@ -1,0 +1,12 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security policy
+    url: https://github.com/tiktok/sparkling/SECURITY.md
+    about: Please report security vulnerabilities using our security policy.
+  - name: Documentation
+    url: https://github.com/tiktok/sparkling/tree/main/docs
+    about: Read guides and API references for Sparkling.
+  - name: Contributing guide
+    url: https://github.com/tiktok/sparkling/CONTRIBUTING.md
+    about: Development setup, testing, and contribution workflow.
+
