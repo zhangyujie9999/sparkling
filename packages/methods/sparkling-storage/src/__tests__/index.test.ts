@@ -2,12 +2,11 @@
 // Licensed under the Apache License Version 2.0 that can be found in the
 // LICENSE file in the root directory of this source tree.
 
-import { createMockPipe } from '../../../../common/test-utils/storage';
+import { createMockPipe } from './test-utils';
 import * as storageModule from '../../index';
 import { setItem as setItemDirect } from '../setStorageItem/setStorageItem';
 import { getItem as getItemDirect } from '../getStorageItem/getStorageItem';
 
-// Mock the bridge before importing the module
 jest.mock('sparkling-method-sdk', () => createMockPipe());
 
 describe('sparkling-storage module exports', () => {
@@ -34,8 +33,6 @@ describe('sparkling-storage module exports', () => {
 
   describe('type exports', () => {
     it('should have type exports available', () => {
-      // TypeScript compilation will fail if types are not properly exported
-      // This test verifies the module can be imported without compilation errors
       const importStatement = `
         import type {
           SetItemRequest,
@@ -45,21 +42,16 @@ describe('sparkling-storage module exports', () => {
         } from '../../index'
       `;
 
-      // If types are not exported, TypeScript would throw compilation error
-      // This test passing means all types are properly exported
       expect(importStatement).toBeTruthy();
     });
   });
 
   describe('module structure validation', () => {
     it('should not export unintended properties', async () => {
-      // Get all exported keys
       const exportedKeys = Object.keys(storageModule as unknown as Record<string, unknown>);
 
-      // Expected exports (functions and types are handled by TypeScript)
       const expectedExports = ['setItem', 'getItem'];
 
-      // Verify we only export what we intend to
       const unexpectedExports = exportedKeys.filter(key => expectedExports.indexOf(key) === -1);
       expect(unexpectedExports).toHaveLength(0);
     });
@@ -75,7 +67,6 @@ describe('sparkling-storage module exports', () => {
     it('should allow importing and using setItem function', async () => {
       const { setItem } = storageModule as unknown as { setItem: typeof storageModule.setItem };
 
-      // Should be able to call the function without throwing
       expect(() => {
         setItem({ key: 'test', data: 'value' }, () => {});
       }).not.toThrow();
@@ -84,7 +75,6 @@ describe('sparkling-storage module exports', () => {
     it('should allow importing and using getItem function', async () => {
       const { getItem } = storageModule as unknown as { getItem: typeof storageModule.getItem };
 
-      // Should be able to call the function without throwing
       expect(() => {
         getItem({ key: 'test' }, () => {});
       }).not.toThrow();
@@ -103,7 +93,6 @@ describe('sparkling-storage module exports', () => {
     });
 
     it('should allow destructured import of all exports', async () => {
-      // This tests that the export structure is correct
       const { setItem, getItem } = storageModule as unknown as {
         setItem: typeof storageModule.setItem;
         getItem: typeof storageModule.getItem;
@@ -121,11 +110,8 @@ describe('sparkling-storage module exports', () => {
         getItem: typeof storageModule.getItem;
       };
 
-      // Verify function signatures by checking parameter length
-      // setItem function should accept 2 parameters: params and callback
       expect(setItem.length).toBe(2);
 
-      // getItem function should accept 2 parameters: params and callback
       expect(getItem.length).toBe(2);
     });
 
@@ -135,7 +121,6 @@ describe('sparkling-storage module exports', () => {
         getItem: typeof storageModule.getItem;
       };
 
-      // Functions should be the exact same reference
       expect(setItemFromIndex).toBe(setItemDirect);
       expect(getItemFromIndex).toBe(getItemDirect);
     });
@@ -149,7 +134,6 @@ describe('sparkling-storage module exports', () => {
       };
       const mockPipe = jest.requireMock('sparkling-method-sdk');
 
-      // Mock successful responses for both operations
       mockPipe.call.mockImplementation((method: string, params: any, callback: any) => {
         if (method === 'storage.setItem') {
           callback({ code: 0, msg: 'Item stored', data: { success: true } });
@@ -158,7 +142,6 @@ describe('sparkling-storage module exports', () => {
         }
       });
 
-      // Test set operation
       let setResult: any;
       setItem({ key: 'test-key', data: 'test-value' }, (result) => {
         setResult = result;
@@ -167,7 +150,6 @@ describe('sparkling-storage module exports', () => {
       expect(setResult.code).toBe(0);
       expect(mockPipe.call).toHaveBeenCalledWith('storage.setItem', expect.anything(), expect.any(Function));
 
-      // Test get operation
       let getResult: any;
       getItem({ key: 'test-key' }, (result) => {
         getResult = result;
@@ -184,12 +166,10 @@ describe('sparkling-storage module exports', () => {
       };
       const mockPipe = jest.requireMock('sparkling-method-sdk');
 
-      // Mock error responses
       mockPipe.call.mockImplementation((method: string, params: any, callback: any) => {
         callback({ code: -1, msg: 'Storage error', data: undefined });
       });
 
-      // Test set error handling
       let setResult: any;
       setItem({ key: 'test-key', data: 'test-value' }, (result) => {
         setResult = result;
@@ -198,7 +178,6 @@ describe('sparkling-storage module exports', () => {
       expect(setResult.code).toBe(-1);
       expect(setResult.msg).toBe('Storage error');
 
-      // Test get error handling
       let getResult: any;
       getItem({ key: 'test-key' }, (result) => {
         getResult = result;

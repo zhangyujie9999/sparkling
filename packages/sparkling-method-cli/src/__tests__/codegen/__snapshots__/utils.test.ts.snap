@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Codegen Utilities snapshot testing should maintain consistent transformation results: string-transformations 1`] = `
+[
+  {
+    "camel": "simple",
+    "jsType": "string",
+    "kebab": "simple",
+    "original": "simple",
+    "pascal": "Simple",
+    "tsType": "string",
+  },
+  {
+    "camel": "camelCase",
+    "jsType": "string",
+    "kebab": "camel-case",
+    "original": "camelCase",
+    "pascal": "CamelCase",
+    "tsType": "string",
+  },
+  {
+    "camel": "pascalCase",
+    "jsType": "string",
+    "kebab": "pascal-case",
+    "original": "PascalCase",
+    "pascal": "PascalCase",
+    "tsType": "string",
+  },
+  {
+    "camel": "snakeCase",
+    "jsType": "string",
+    "kebab": "snake-case",
+    "original": "snake_case",
+    "pascal": "SnakeCase",
+    "tsType": "string",
+  },
+  {
+    "camel": "kebabCase",
+    "jsType": "string",
+    "kebab": "kebab-case",
+    "original": "kebab-case",
+    "pascal": "KebabCase",
+    "tsType": "string",
+  },
+  {
+    "camel": "mixedCaseString",
+    "jsType": "string",
+    "kebab": "mixed-case-string",
+    "original": "mixed_case-string",
+    "pascal": "MixedCaseString",
+    "tsType": "string",
+  },
+  {
+    "camel": "xmlhttpRequest",
+    "jsType": "string",
+    "kebab": "xmlhttp-request",
+    "original": "XMLHttpRequest",
+    "pascal": "XmlhttpRequest",
+    "tsType": "string",
+  },
+  {
+    "camel": "getUserById",
+    "jsType": "string",
+    "kebab": "get-user-by-id",
+    "original": "getUserById",
+    "pascal": "GetUserById",
+    "tsType": "string",
+  },
+  {
+    "camel": "apiEndpointUrl",
+    "jsType": "string",
+    "kebab": "api-endpoint-url",
+    "original": "API_ENDPOINT_URL",
+    "pascal": "ApiEndpointUrl",
+    "tsType": "string",
+  },
+]
+`;
+
+exports[`Codegen Utilities snapshot testing should maintain consistent type mappings: type-mappings 1`] = `
+[
+  {
+    "javascript": "string",
+    "primitive": "string",
+    "typescript": "string",
+  },
+  {
+    "javascript": "number",
+    "primitive": "number",
+    "typescript": "number",
+  },
+  {
+    "javascript": "boolean",
+    "primitive": "boolean",
+    "typescript": "boolean",
+  },
+  {
+    "javascript": "undefined",
+    "primitive": "void",
+    "typescript": "void",
+  },
+  {
+    "javascript": "object",
+    "primitive": "object",
+    "typescript": "Record<string, any>",
+  },
+  {
+    "javascript": "undefined",
+    "primitive": "any",
+    "typescript": "any",
+  },
+]
+`;

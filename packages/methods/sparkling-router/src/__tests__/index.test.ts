@@ -3,13 +3,12 @@
 // Licensed under the Apache License Version 2.0 that can be found in the
 // LICENSE file in the root directory of this source tree.
 
-import { createMockPipe } from '../../../../common/test-utils/router';
+import { createMockPipe } from './test-utils';
 import * as routerModule from '../../index';
 import { open as openDirect } from '../open/open';
 import { close as closeDirect } from '../close/close';
 import { navigate as navigateDirect } from '../navigate/navigate';
 
-// Mock the pipe before importing the module
 jest.mock('sparkling-method-sdk', () => createMockPipe());
 
 describe('sparkling-router module exports', () => {
@@ -41,8 +40,7 @@ describe('sparkling-router module exports', () => {
 
   describe('type exports', () => {
     it('should have type exports available', () => {
-      // TypeScript compilation will fail if types are not properly exported
-      // This test verifies the module can be imported without compilation errors
+
       const importStatement = `
         import type {
           OpenRequest,
@@ -64,14 +62,11 @@ describe('sparkling-router module exports', () => {
 
   describe('module structure validation', () => {
     it('should not export unintended properties', async () => {
-      // Get all exported keys
       const moduleAny: Record<string, unknown> = routerModule as unknown as Record<string, unknown>;
       const exportedKeys = Object.keys(moduleAny);
 
-      // Expected exports (functions and types are handled by TypeScript)
       const expectedExports = ['open', 'close', 'navigate'];
 
-      // Verify we only export what we intend to
       const unexpectedExports = exportedKeys.filter(key => expectedExports.indexOf(key) === -1);
       expect(unexpectedExports).toHaveLength(0);
     });
@@ -87,7 +82,6 @@ describe('sparkling-router module exports', () => {
     it('should allow importing and using open function', async () => {
       const { open } = routerModule as unknown as { open: typeof routerModule.open };
 
-      // Should be able to call the function without throwing
       expect(() => {
         open({ scheme: 'test://example' }, () => {});
       }).not.toThrow();
@@ -96,7 +90,6 @@ describe('sparkling-router module exports', () => {
     it('should allow importing and using close function', async () => {
       const { close } = routerModule as unknown as { close: typeof routerModule.close };
 
-      // Should be able to call the function without throwing
       expect(() => {
         close({ containerID: 'test' }, () => {});
       }).not.toThrow();
@@ -126,7 +119,6 @@ describe('sparkling-router module exports', () => {
     });
 
     it('should allow destructured import of all exports', async () => {
-      // This tests that the export structure is correct
       const { open, close, navigate } = routerModule as unknown as {
         open: typeof routerModule.open;
         close: typeof routerModule.close;
@@ -147,14 +139,10 @@ describe('sparkling-router module exports', () => {
         navigate: typeof routerModule.navigate;
       };
 
-      // Verify function signatures by checking parameter length
-      // open function should accept 2 parameters: params and callback
       expect(open.length).toBe(2);
 
-      // close function should accept 2 parameters: params? and callback?
       expect(close.length).toBe(2);
 
-      // navigate function should accept 2 parameters: params and callback
       expect(navigate.length).toBe(2);
     });
 
@@ -165,7 +153,6 @@ describe('sparkling-router module exports', () => {
         navigate: typeof routerModule.navigate;
       };
 
-      // Functions should be the exact same reference
       expect(openFromIndex).toBe(openDirect);
       expect(closeFromIndex).toBe(closeDirect);
       expect(navigateFromIndex).toBe(navigateDirect);

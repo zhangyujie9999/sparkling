@@ -4,9 +4,8 @@
 
 import { setItem } from '../../setStorageItem/setStorageItem';
 import type { SetItemRequest, SetItemResponse } from '../../setStorageItem/setStorageItem.d';
-import { createMockPipe, createSuccessResponse, createErrorResponse, TEST_CONSTANTS } from '../../../../../common/test-utils/storage';
+import { createMockPipe, createSuccessResponse, createErrorResponse, TEST_CONSTANTS } from '../test-utils';
 
-// Mock the pipe module
 jest.mock('sparkling-method-sdk', () => ({ call: jest.fn() }));
 
 describe('setItem', () => {
@@ -387,7 +386,6 @@ expect(consoleErrorSpy).toHaveBeenCalledWith('[sparkling-storage] setItem: callb
         done();
       });
 
-      // Mock pipe to simulate successful response
       mockPipe.call.mockImplementation((method, params, callback) => {
         callback(mockResponse);
       });
@@ -586,15 +584,12 @@ expect(consoleErrorSpy).toHaveBeenCalledWith('[sparkling-storage] setItem: callb
     it('should validate SetItemResponse contract requirements', () => {
       const params: SetItemRequest = { key: TEST_CONSTANTS.VALID_KEY, data: TEST_CONSTANTS.VALID_STRING_DATA };
 
-      // Type checking at compile time ensures this callback matches SetItemResponse
       const callback = (result: SetItemResponse) => {
         // These properties must exist per the interface
         expect(typeof result.code).toBe('number');
         expect(typeof result.msg).toBe('string');
-        // data is optional in SetItemResponse
       };
 
-      // Should not throw any TypeScript compilation errors
       setItem(params, callback);
     });
 

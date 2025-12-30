@@ -2,7 +2,7 @@
 // Licensed under the Apache License Version 2.0 that can be found in the
 // LICENSE file in the root directory of this source tree.
 
-import { withMockArgv } from '../../../common/test-utils/create-sparkling-app';
+import { withMockArgv } from './test-utils';
 
 const mockBuild = jest.fn();
 const mockHelp = jest.fn();

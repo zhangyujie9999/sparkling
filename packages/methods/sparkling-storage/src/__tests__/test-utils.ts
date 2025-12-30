@@ -2,58 +2,23 @@
 // Licensed under the Apache License Version 2.0 that can be found in the
 // LICENSE file in the root directory of this source tree.
 
-/**
- * Test utilities for sparkling-storage
- */
+import {
+  createMockPipe,
+  createSuccessResponseBase,
+  createErrorResponseBase,
+  validateContract,
+} from '../../../../common/test-utils';
 
-export interface MockPipe {
-  call: jest.MockedFunction<(method: string, params: any, callback: any) => void>;
-}
+export { createMockPipe, validateContract };
+export type { MockPipe } from '../../../../common/test-utils';
 
-/**
- * Create a mock pipe for testing method calls
- */
-export const createMockPipe = (): MockPipe => {
-  return {
-    call: jest.fn(),
-  };
-};
+export const createSuccessResponse = (data?: any) => createSuccessResponseBase({ data });
 
-/**
- * Create a mock pipe response for successful storage operations
- */
-export const createSuccessResponse = (data?: any) => ({
-  code: 0,
-  msg: 'Success',
-  data,
-});
+export const createErrorResponse = (code: number = -1, msg: string = 'Error', data?: any) =>
+  createErrorResponseBase(code, msg, { data });
 
-/**
- * Create a mock pipe response for failed storage operations
- */
-export const createErrorResponse = (code: number = -1, msg: string = 'Error', data?: any) => ({
-  code,
-  msg,
-  data,
-});
+export const validateStorageContract = validateContract;
 
-/**
- * Helper to validate storage method contract responses
- */
-export const validateStorageContract = <T>(
-  response: any,
-  requiredFields: (keyof T)[]
-): response is T => {
-  if (!response || typeof response !== 'object') {
-    return false;
-  }
-
-  return requiredFields.every((field) => response.hasOwnProperty(field));
-};
-
-/**
- * Test constants for consistent testing
- */
 export const TEST_CONSTANTS = {
   VALID_KEY: 'test-storage-key',
   INVALID_KEY_EMPTY: '',
@@ -70,9 +35,6 @@ export const TEST_CONSTANTS = {
   INVALID_DURATION_STRING: 'invalid' as any,
 } as const;
 
-/**
- * Mock storage response data shapes
- */
 export const MOCK_STORAGE_RESPONSES = {
   getString: { data: TEST_CONSTANTS.VALID_STRING_DATA },
   getNumber: { data: TEST_CONSTANTS.VALID_NUMBER_DATA },
@@ -83,6 +45,4 @@ export const MOCK_STORAGE_RESPONSES = {
   getUndefined: { data: undefined },
   notFound: { data: undefined },
 } as const;
-
-
 

@@ -21,7 +21,7 @@ exports[`setItem snapshot testing for responses should return consistent error r
 }
 `;
 
-exports[`setItem snapshot testing for responses should return consistent processed response for valid bridge response: valid-set-response 1`] = `
+exports[`setItem snapshot testing for responses should return consistent processed response for valid pipe response: valid-set-response 1`] = `
 {
   "code": 0,
   "data": {

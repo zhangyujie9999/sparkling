@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Template Processing (Mustache Integration) snapshot testing should generate consistent template outputs: mustache-template-outputs 1`] = `
+[
+  {
+    "name": "simple-interface",
+    "output": "interface TestInterface { id: string; value: number; }",
+  },
+  {
+    "name": "conditional-rendering",
+    "output": "Fields: 5",
+  },
+  {
+    "name": "array-with-conditionals",
+    "output": "first, second, third",
+  },
+]
+`;

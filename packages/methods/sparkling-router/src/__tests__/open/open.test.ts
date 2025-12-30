@@ -5,9 +5,9 @@
 
 import { open } from '../../open/open';
 import type { OpenRequest, OpenResponse, OpenOptions } from '../../open/open.d';
-import { createMockPipe, createSuccessResponse, createErrorResponse, TEST_CONSTANTS, MockPipe } from '../../../../../common/test-utils/router';
+import { createMockPipe, createSuccessResponse, createErrorResponse, TEST_CONSTANTS, MockPipe } from '../test-utils';
 
-// Mock the pipe module
+// Mock the pipe modul
 jest.mock('sparkling-method-sdk', () => ({ call: jest.fn() }));
 
 describe('open', () => {
@@ -270,17 +270,13 @@ expect(consoleErrorSpy).toHaveBeenCalledWith('[sparkling-router] open: callback 
 
   describe('contract testing', () => {
     it('should validate OpenResponse contract requirements', () => {
-      // This test ensures the function signature matches the interface
       const params: OpenRequest = { scheme: TEST_CONSTANTS.VALID_SCHEME };
 
-      // Type checking at compile time ensures this callback matches OpenResponse
       const callback = (result: OpenResponse) => {
-        // These properties must exist per the interface
         expect(typeof result.code).toBe('number');
         expect(typeof result.msg).toBe('string');
       };
 
-      // Should not throw any TypeScript compilation errors
       open(params, callback);
     });
 
@@ -298,7 +294,6 @@ expect(consoleErrorSpy).toHaveBeenCalledWith('[sparkling-router] open: callback 
       };
       const callback = jest.fn();
 
-      // Should not throw and should call pipe correctly
       expect(() => open(fullRequest, callback)).not.toThrow();
       expect(mockPipe.call).toHaveBeenCalledTimes(1);
     });

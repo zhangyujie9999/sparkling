@@ -11,7 +11,7 @@ import {
   createMockExecForIOS,
   createMockExecNoSimulator,
   TEST_CONSTANTS,
-} from '../../../common/test-utils/create-sparkling-app';
+} from './test-utils';
 
 
 jest.mock('child_process');

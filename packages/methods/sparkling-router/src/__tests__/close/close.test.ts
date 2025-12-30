@@ -5,9 +5,8 @@
 
 import { close } from '../../close/close';
 import type { CloseRequest, CloseResponse } from '../../close/close.d';
-import { createMockPipe, createSuccessResponse, createErrorResponse, TEST_CONSTANTS, MockPipe } from '../../../../../common/test-utils/router';
+import { createMockPipe, createSuccessResponse, createErrorResponse, TEST_CONSTANTS, MockPipe } from '../test-utils';
 
-// Mock the pipe module
 jest.mock('sparkling-method-sdk', () => ({ call: jest.fn() }));
 
 describe('close', () => {
@@ -157,7 +156,6 @@ expect(consoleErrorSpy).toHaveBeenCalledWith('[sparkling-router] close: callback
         expect(result.msg).toBe('Success');
         done();
       });
-
       // Mock pipe to simulate successful response
       mockPipe.call.mockImplementation((method, params, callback) => {
         callback(mockResponse);
@@ -175,7 +173,6 @@ expect(consoleErrorSpy).toHaveBeenCalledWith('[sparkling-router] close: callback
         done();
       });
 
-      // Mock pipe to simulate incomplete response
       mockPipe.call.mockImplementation((method, params, callback) => {
         callback(incompleteResponse);
       });
@@ -192,7 +189,6 @@ expect(consoleErrorSpy).toHaveBeenCalledWith('[sparkling-router] close: callback
         done();
       });
 
-      // Mock pipe to simulate response with null code
       mockPipe.call.mockImplementation((method, params, callback) => {
         callback(responseWithNullCode);
       });
@@ -209,7 +205,6 @@ expect(consoleErrorSpy).toHaveBeenCalledWith('[sparkling-router] close: callback
         done();
       });
 
-      // Mock pipe to simulate response with null msg
       mockPipe.call.mockImplementation((method, params, callback) => {
         callback(responseWithNullMsg);
       });
@@ -221,12 +216,10 @@ expect(consoleErrorSpy).toHaveBeenCalledWith('[sparkling-router] close: callback
       const params: CloseRequest = { containerID: 'test' };
       const mockResponse = createSuccessResponse();
 
-      // Mock pipe to simulate response
       mockPipe.call.mockImplementation((method, params, callback) => {
         callback(mockResponse);
       });
 
-      // Should not throw when no callback provided
       expect(() => close(params)).not.toThrow();
     });
 
@@ -239,7 +232,6 @@ expect(consoleErrorSpy).toHaveBeenCalledWith('[sparkling-router] close: callback
         done();
       });
 
-      // Mock pipe to simulate error response
       mockPipe.call.mockImplementation((method, params, callback) => {
         callback(errorResponse);
       });
@@ -278,7 +270,6 @@ expect(consoleErrorSpy).toHaveBeenCalledWith('[sparkling-router] close: callback
     });
 
     it('should handle boolean edge cases for animated', () => {
-      // Test both true and false explicitly
       const paramsTrue: CloseRequest = { animated: true };
       const paramsFalse: CloseRequest = { animated: false };
       const callback = jest.fn();
@@ -307,12 +298,10 @@ expect(consoleErrorSpy).toHaveBeenCalledWith('[sparkling-router] close: callback
 
       // Type checking at compile time ensures this callback matches CloseResponse
       const callback = (result: CloseResponse) => {
-        // These properties must exist per the interface
         expect(typeof result.code).toBe('number');
         expect(typeof result.msg).toBe('string');
       };
 
-      // Should not throw any TypeScript compilation errors
       close(params, callback);
     });
 
@@ -323,7 +312,6 @@ expect(consoleErrorSpy).toHaveBeenCalledWith('[sparkling-router] close: callback
       };
       const callback = jest.fn();
 
-      // Should not throw and should call pipe correctly
       expect(() => close(fullRequest, callback)).not.toThrow();
       expect(mockPipe.call).toHaveBeenCalledTimes(1);
     });
@@ -332,7 +320,6 @@ expect(consoleErrorSpy).toHaveBeenCalledWith('[sparkling-router] close: callback
       const minimalRequest: CloseRequest = {};
       const callback = jest.fn();
 
-      // Should not throw and should call pipe correctly
       expect(() => close(minimalRequest, callback)).not.toThrow();
       expect(mockPipe.call).toHaveBeenCalledTimes(1);
     });

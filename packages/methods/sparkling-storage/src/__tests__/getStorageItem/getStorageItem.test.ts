@@ -4,7 +4,7 @@
 
 import { getItem } from '../../getStorageItem/getStorageItem';
 import type { GetItemRequest, GetItemResponse } from '../../getStorageItem/getStorageItem.d';
-import { createMockPipe, createSuccessResponse, createErrorResponse, TEST_CONSTANTS, MOCK_STORAGE_RESPONSES, MockPipe } from '../../../../../common/test-utils/storage';
+import { createMockPipe, createSuccessResponse, createErrorResponse, TEST_CONSTANTS, MOCK_STORAGE_RESPONSES, MockPipe } from '../test-utils';
 
 // Mock the pipe module
 jest.mock('sparkling-method-sdk', () => ({ call: jest.fn() }));

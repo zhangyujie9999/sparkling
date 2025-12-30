@@ -68,5 +68,3 @@ export const withMockArgv = (args: string[], testFn: () => void | Promise<void>)
   }
 };
 
-
-

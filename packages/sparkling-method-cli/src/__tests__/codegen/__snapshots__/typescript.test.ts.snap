@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TypeScript Code Generation snapshot testing should generate consistent TypeScript views: typescript-view-generation 1`] = `
+{
+  "extraInterfaces": [],
+  "hasRequestParams": true,
+  "hasResponseData": true,
+  "methodCamelCase": "testMethod",
+  "methodName": "testMethod",
+  "methodPascalCase": "TestMethod",
+  "moduleName": "TestModule",
+  "packageName": "com.example.test",
+  "pipeCall": {
+    "methodString": "TestModule.testMethod",
+    "params": [
+      "message: params.message.trim()",
+      "duration: params.duration ?? 2000",
+    ],
+  },
+  "requestInterface": [
+    {
+      "name": "message",
+      "optional": false,
+      "type": "string",
+    },
+    {
+      "name": "duration",
+      "optional": true,
+      "type": "number",
+    },
+  ],
+  "responseInterface": [
+    {
+      "name": "success",
+      "optional": false,
+      "type": "boolean",
+    },
+    {
+      "name": "data",
+      "optional": true,
+      "type": "any",
+    },
+  ],
+  "validationRules": [
+    {
+      "field": "message",
+      "jsType": "string",
+      "type": "type-check",
+    },
+  ],
+}
+`;
+
+exports[`TypeScript Code Generation snapshot testing should generate consistent validation rules for complex types: validation-rules-complex-types 1`] = `
+[
+  {
+    "errorMessage": "Invalid params: stringField must be a non-empty string",
+    "field": "stringField",
+    "jsType": "string",
+    "trimValue": true,
+    "type": "type-check",
+  },
+  {
+    "errorMessage": "Invalid params: numberField must be of type number",
+    "field": "numberField",
+    "jsType": "number",
+    "type": "type-check",
+  },
+  {
+    "errorMessage": "Invalid params: booleanField must be of type boolean",
+    "field": "booleanField",
+    "jsType": "boolean",
+    "type": "type-check",
+  },
+  {
+    "errorMessage": "Invalid params: arrayField must be of type object",
+    "field": "arrayField",
+    "jsType": "object",
+    "type": "type-check",
+  },
+]
+`;
