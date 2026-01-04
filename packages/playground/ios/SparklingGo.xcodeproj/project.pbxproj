@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07B2FB684B8D385782138000 /* Pods_SparklingGoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD74935FFBD17E3B3D4E69A /* Pods_SparklingGoUITests.framework */; };
-		9032073B2ED961B300167236 /* LynxResources in Resources */ = {isa = PBXBuildFile; fileRef = 9032073A2ED961B300167236 /* LynxResources */; };
+		9032073B2ED961B300167236 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 9032073A2ED961B300167236 /* Assets */; };
 		CEAB8C5202B26CF8F0BE5581 /* Pods_SparklingGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B00F0DF4C89E15C31BC93A3 /* Pods_SparklingGo.framework */; };
 		DE44680A8011EA315778F328 /* Pods_SparklingMethodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80857B85C0422883390B2606 /* Pods_SparklingMethodTests.framework */; };
 		E1EA18997313C777BCB28C73 /* Pods_SparklingGoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34294AA1E3153C7FF24DA29D /* Pods_SparklingGoTests.framework */; };
@@ -49,7 +49,7 @@
 		80857B85C0422883390B2606 /* Pods_SparklingMethodTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SparklingMethodTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C76000D4A2F6C5E1542B66F /* Pods-SparklingMethodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SparklingMethodTests.debug.xcconfig"; path = "Target Support Files/Pods-SparklingMethodTests/Pods-SparklingMethodTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8CA3C88BC922913EC94B79D5 /* Pods-SparklingGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SparklingGo.release.xcconfig"; path = "Target Support Files/Pods-SparklingGo/Pods-SparklingGo.release.xcconfig"; sourceTree = "<group>"; };
-		9032073A2ED961B300167236 /* LynxResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LynxResources; sourceTree = "<group>"; };
+		9032073A2ED961B300167236 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = SparklingGo/SparklingGo/Resources/Assets; sourceTree = "<group>"; };
 		9AD74935FFBD17E3B3D4E69A /* Pods_SparklingGoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SparklingGoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5E42D779278857A5AAB06BF /* Pods-SparklingGoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SparklingGoUITests.debug.xcconfig"; path = "Target Support Files/Pods-SparklingGoUITests/Pods-SparklingGoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BEB0A8939FDC0E69DE1ACBE1 /* Pods-SparklingGoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SparklingGoUITests.release.xcconfig"; path = "Target Support Files/Pods-SparklingGoUITests/Pods-SparklingGoUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -61,29 +61,21 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		44A4C3042E271D570011A613 /* SparklingMethodTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = SparklingMethodTests;
 			sourceTree = "<group>";
 		};
 		44B59A892DE9041F00A05B89 /* SparklingGo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = SparklingGo;
 			sourceTree = "<group>";
 		};
 		44B59A9B2DE9042100A05B89 /* SparklingGoTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = SparklingGoTests;
 			sourceTree = "<group>";
 		};
 		44B59AA52DE9042100A05B89 /* SparklingGoUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = SparklingGoUITests;
 			sourceTree = "<group>";
 		};
@@ -139,7 +131,7 @@
 		44B59A7E2DE9041F00A05B89 = {
 			isa = PBXGroup;
 			children = (
-				9032073A2ED961B300167236 /* LynxResources */,
+				9032073A2ED961B300167236 /* Assets */,
 				44B59A892DE9041F00A05B89 /* SparklingGo */,
 				44B59A9B2DE9042100A05B89 /* SparklingGoTests */,
 				44B59AA52DE9042100A05B89 /* SparklingGoUITests */,
@@ -336,7 +328,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9032073B2ED961B300167236 /* LynxResources in Resources */,
+				9032073B2ED961B300167236 /* Assets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,9 +357,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SparklingGo/Pods-SparklingGo-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SparklingGo/Pods-SparklingGo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -382,9 +378,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SparklingGoUITests/Pods-SparklingGoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SparklingGoUITests/Pods-SparklingGoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -421,9 +421,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SparklingGoTests/Pods-SparklingGoTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SparklingGoTests/Pods-SparklingGoTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -438,9 +442,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SparklingMethodTests/Pods-SparklingMethodTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SparklingMethodTests/Pods-SparklingMethodTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -455,9 +463,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SparklingGo/Pods-SparklingGo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SparklingGo/Pods-SparklingGo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -472,9 +484,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SparklingGoUITests/Pods-SparklingGoUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SparklingGoUITests/Pods-SparklingGoUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -501,23 +517,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		90F9B5F94DFFF9DBCEB9A2EE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SparklingGoUITests/Pods-SparklingGoUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SparklingGoUITests/Pods-SparklingGoUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SparklingGoUITests/Pods-SparklingGoUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		912D5F4C591FEE53AE2B078A /* [CP] Check Pods Manifest.lock */ = {
@@ -564,57 +563,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AD25B1600C6D48FC9CE77B81 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SparklingGo/Pods-SparklingGo-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SparklingGo/Pods-SparklingGo-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SparklingGo/Pods-SparklingGo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AF316E17E2BF7845E009753A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SparklingMethodTests/Pods-SparklingMethodTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SparklingMethodTests/Pods-SparklingMethodTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SparklingMethodTests/Pods-SparklingMethodTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CD21E34C75EF6A520A021A8C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SparklingGoTests/Pods-SparklingGoTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SparklingGoTests/Pods-SparklingGoTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SparklingGoTests/Pods-SparklingGoTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D8B9D87ED24102E5E029ED28 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -623,9 +571,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SparklingMethodTests/Pods-SparklingMethodTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SparklingMethodTests/Pods-SparklingMethodTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -640,9 +592,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SparklingGoTests/Pods-SparklingGoTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SparklingGoTests/Pods-SparklingGoTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -872,7 +828,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RL87M95CBB;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -914,7 +870,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RL87M95CBB;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;

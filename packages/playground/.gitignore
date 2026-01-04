@@ -26,9 +26,6 @@ examples/**/build/
 examples/**/DerivedData/
 examples/**/Pods/
 
-# Native copied assets (ignore outputs of copy-assets)
-android/app/src/main/assets/
-ios/SparklingGo/SparklingGo/Resources/Assets/
 
 # Logs
 npm-debug.log*

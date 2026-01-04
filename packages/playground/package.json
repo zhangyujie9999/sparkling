@@ -4,7 +4,7 @@
   "type": "module",
   "description": "Multi-page Sparkling app template with main app and second page demos",
   "scripts": {
-    "build": "rspeedy build && node scripts/copy-assets.js",
+    "build": "pnpm -C ../.. --filter sparkling-method-sdk --filter sparkling-router --filter sparkling-storage build && rspeedy build && node scripts/copy-assets.js",
     "dev": "rspeedy dev",
     "format": "prettier --write .",
     "preview": "rspeedy preview",
